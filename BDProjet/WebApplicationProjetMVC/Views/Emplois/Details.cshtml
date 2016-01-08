@@ -1,0 +1,58 @@
+﻿@model WebApplicationProjetMVC.Models.Emploi
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Emploi</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.dateEmbauche)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateEmbauche)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dateFin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateFin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.soumis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.soumis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Entreprise.denomination)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Entreprise.denomination)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Travailleur.nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Travailleur.nom)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idEmploi }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

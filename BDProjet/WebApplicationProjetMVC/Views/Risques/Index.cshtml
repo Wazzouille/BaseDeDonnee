@@ -1,0 +1,32 @@
+﻿@model WebApplicationProjetMVC.Models.EmploiRisqueViewModels
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Liste des risques</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Libelle du risque
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.RisqueModel) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.libelle)
+        </td>
+        <td>
+            @Html.ActionLink("Assigner ce risque", "Index", "TravSoumis", new { idR=item.idRisque, idE = Model.EmploiModel.idEmploi }, null)
+        </td>
+    </tr>
+}
+
+</table>
+
+<div>
+    @Html.ActionLink("Retour à la liste des emplois", "Index", "Emplois", new { id = Model.EmploiModel.idEntreprise }, null)
+</div>

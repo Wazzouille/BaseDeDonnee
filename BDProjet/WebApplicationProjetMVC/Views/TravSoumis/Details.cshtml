@@ -1,0 +1,34 @@
+﻿@model WebApplicationProjetMVC.Models.TravSoumi
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TravSoumi</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Emploi.soumis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Emploi.soumis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Risque.libelle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Risque.libelle)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idTravSoum }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

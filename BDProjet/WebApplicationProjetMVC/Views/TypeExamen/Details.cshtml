@@ -1,0 +1,66 @@
+﻿@model WebApplicationProjetMVC.Models.TypeExaman
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TypeExaman</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.libelle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.libelle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.periodicite)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.periodicite)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.prixTS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prixTS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.prixNS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prixNS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompteDeProduit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompteDeProduit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Risque.libelle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Risque.libelle)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idExamen }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

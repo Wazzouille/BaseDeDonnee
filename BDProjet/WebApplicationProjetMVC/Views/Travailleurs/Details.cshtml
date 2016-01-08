@@ -1,0 +1,58 @@
+﻿@model WebApplicationProjetMVC.Models.Travailleur
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Travailleur</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ville)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ville)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.codePostal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.codePostal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.numRue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.numRue)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idTrav }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

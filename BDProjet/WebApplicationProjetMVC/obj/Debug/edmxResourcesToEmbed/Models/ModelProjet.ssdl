@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBIG3B8Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Emploi">
+    <Key>
+      <PropertyRef Name="idEmploi" />
+    </Key>
+    <Property Name="idEmploi" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="dateEmbauche" Type="date" Nullable="false" />
+    <Property Name="dateFin" Type="date" />
+    <Property Name="soumis" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="idEntreprise" Type="numeric" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="idTrav" Type="numeric" Precision="4" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Entreprise">
+    <Key>
+      <PropertyRef Name="idEntreprise" />
+    </Key>
+    <Property Name="idEntreprise" Type="numeric" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="denomination" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="personneContact" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ville" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="codePostal" Type="numeric" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="rue" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="numeroRue" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+    <Property Name="numTel" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ExamenParticulier">
+    <Key>
+      <PropertyRef Name="idExamPart" />
+    </Key>
+    <Property Name="idExamPart" Type="numeric" Precision="8" Scale="0" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="idEmploi" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="idExamen" Type="numeric" Precision="8" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Risque">
+    <Key>
+      <PropertyRef Name="idRisque" />
+    </Key>
+    <Property Name="libelle" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="idRisque" Type="numeric" Precision="8" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Travailleur">
+    <Key>
+      <PropertyRef Name="idTrav" />
+    </Key>
+    <Property Name="idTrav" Type="numeric" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="nom" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="ville" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="codePostal" Type="numeric" Precision="4" Scale="0" Nullable="false" />
+    <Property Name="rue" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="numRue" Type="numeric" Precision="3" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TravSoumis">
+    <Key>
+      <PropertyRef Name="idTravSoum" />
+    </Key>
+    <Property Name="idTravSoum" Type="numeric" Precision="8" Scale="0" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="idEmploi" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="idRisque" Type="numeric" Precision="8" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TypeExamen">
+    <Key>
+      <PropertyRef Name="idExamen" />
+    </Key>
+    <Property Name="idExamen" Type="numeric" Precision="8" Scale="0" Nullable="false" />
+    <Property Name="libelle" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="periodicite" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="prixTS" Type="numeric" Precision="4" Scale="2" Nullable="false" />
+    <Property Name="prixNS" Type="numeric" Precision="4" Scale="2" Nullable="false" />
+    <Property Name="CompteDeProduit" Type="numeric" Precision="8" Scale="0" Nullable="false" />
+    <Property Name="idRisque" Type="numeric" Precision="8" Scale="0" Nullable="false" />
+  </EntityType>
+  <Association Name="FKExa1_Emp_FK">
+    <End Role="Emploi" Type="Self.Emploi" Multiplicity="1" />
+    <End Role="ExamenParticulier" Type="Self.ExamenParticulier" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Emploi">
+        <PropertyRef Name="idEmploi" />
+      </Principal>
+      <Dependent Role="ExamenParticulier">
+        <PropertyRef Name="idEmploi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKExa1_Typ">
+    <End Role="TypeExamen" Type="Self.TypeExamen" Multiplicity="1" />
+    <End Role="ExamenParticulier" Type="Self.ExamenParticulier" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeExamen">
+        <PropertyRef Name="idExamen" />
+      </Principal>
+      <Dependent Role="ExamenParticulier">
+        <PropertyRef Name="idExamen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKlien1_FK">
+    <End Role="Risque" Type="Self.Risque" Multiplicity="1" />
+    <End Role="TypeExamen" Type="Self.TypeExamen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Risque">
+        <PropertyRef Name="idRisque" />
+      </Principal>
+      <Dependent Role="TypeExamen">
+        <PropertyRef Name="idRisque" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKR_12_FK">
+    <End Role="Entreprise" Type="Self.Entreprise" Multiplicity="1" />
+    <End Role="Emploi" Type="Self.Emploi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Entreprise">
+        <PropertyRef Name="idEntreprise" />
+      </Principal>
+      <Dependent Role="Emploi">
+        <PropertyRef Name="idEntreprise" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKR1_FK">
+    <End Role="Travailleur" Type="Self.Travailleur" Multiplicity="1" />
+    <End Role="Emploi" Type="Self.Emploi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Travailleur">
+        <PropertyRef Name="idTrav" />
+      </Principal>
+      <Dependent Role="Emploi">
+        <PropertyRef Name="idTrav" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKTra1_Emp_FK">
+    <End Role="Emploi" Type="Self.Emploi" Multiplicity="1" />
+    <End Role="TravSoumis" Type="Self.TravSoumis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Emploi">
+        <PropertyRef Name="idEmploi" />
+      </Principal>
+      <Dependent Role="TravSoumis">
+        <PropertyRef Name="idEmploi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKTra1_Ris">
+    <End Role="Risque" Type="Self.Risque" Multiplicity="1" />
+    <End Role="TravSoumis" Type="Self.TravSoumis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Risque">
+        <PropertyRef Name="idRisque" />
+      </Principal>
+      <Dependent Role="TravSoumis">
+        <PropertyRef Name="idRisque" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBIG3B8ModelStoreContainer">
+    <EntitySet Name="Emploi" EntityType="Self.Emploi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Entreprise" EntityType="Self.Entreprise" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExamenParticulier" EntityType="Self.ExamenParticulier" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Risque" EntityType="Self.Risque" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Travailleur" EntityType="Self.Travailleur" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TravSoumis" EntityType="Self.TravSoumis" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TypeExamen" EntityType="Self.TypeExamen" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FKExa1_Emp_FK" Association="Self.FKExa1_Emp_FK">
+      <End Role="Emploi" EntitySet="Emploi" />
+      <End Role="ExamenParticulier" EntitySet="ExamenParticulier" />
+    </AssociationSet>
+    <AssociationSet Name="FKExa1_Typ" Association="Self.FKExa1_Typ">
+      <End Role="TypeExamen" EntitySet="TypeExamen" />
+      <End Role="ExamenParticulier" EntitySet="ExamenParticulier" />
+    </AssociationSet>
+    <AssociationSet Name="FKlien1_FK" Association="Self.FKlien1_FK">
+      <End Role="Risque" EntitySet="Risque" />
+      <End Role="TypeExamen" EntitySet="TypeExamen" />
+    </AssociationSet>
+    <AssociationSet Name="FKR_12_FK" Association="Self.FKR_12_FK">
+      <End Role="Entreprise" EntitySet="Entreprise" />
+      <End Role="Emploi" EntitySet="Emploi" />
+    </AssociationSet>
+    <AssociationSet Name="FKR1_FK" Association="Self.FKR1_FK">
+      <End Role="Travailleur" EntitySet="Travailleur" />
+      <End Role="Emploi" EntitySet="Emploi" />
+    </AssociationSet>
+    <AssociationSet Name="FKTra1_Emp_FK" Association="Self.FKTra1_Emp_FK">
+      <End Role="Emploi" EntitySet="Emploi" />
+      <End Role="TravSoumis" EntitySet="TravSoumis" />
+    </AssociationSet>
+    <AssociationSet Name="FKTra1_Ris" Association="Self.FKTra1_Ris">
+      <End Role="Risque" EntitySet="Risque" />
+      <End Role="TravSoumis" EntitySet="TravSoumis" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

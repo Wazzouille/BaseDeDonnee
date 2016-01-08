@@ -1,0 +1,50 @@
+﻿@model IEnumerable<WebApplicationProjetMVC.Models.Emploi>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Liste des emplois</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Nom du travailleur
+        </th>
+        <th>
+            Date d'embauche
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Travailleur.nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dateEmbauche)
+            </td>
+            <td>
+                @{
+                    if (item.soumis == "1")
+                    {
+                        @Html.ActionLink("Ajouter risque", "Index", "Risques", new { id = item.idEmploi }, null)
+                        <text> | </text>
+                        @Html.ActionLink("Ajouter examen particulier", "Index", "TypeExamen", new { id = item.idEmploi }, null)
+                    }
+                    else 
+                    {
+                    @Html.ActionLink("Ajouter examen particulier", "Index", "TypeExamen", new { id = item.idEmploi }, null)
+                    }
+                }
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div>
+    @Html.ActionLink("Retour à la liste des entreprises", "Index", "Entreprises")
+</div>

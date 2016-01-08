@@ -1,0 +1,20 @@
+﻿@model WebApplicationProjetMVC.Models.TravSoumisViewModels
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Confirmation de l'ajout</h2>
+<div>
+    <h3>
+       Etes vous sur de vouloir assigner le risque " @Html.DisplayName(Model.RisqueModel.libelle) " au travailleur " @Html.DisplayName(Model.EmploiModel.Travailleur.nom) "
+       de l'entreprise " @Html.DisplayName(Model.EmploiModel.Entreprise.denomination) "
+    </h3>
+</div>
+<div>
+    @Html.ActionLink("Valider", "Create", "TravSoumis", new { idR = Model.RisqueModel.idRisque, idE = Model.EmploiModel.idEmploi }, null)
+</div>
+<div>
+    @Html.ActionLink("Retour à la liste des risques", "Index", "Risques", new { id = Model.EmploiModel.idEmploi }, null)
+</div>
+

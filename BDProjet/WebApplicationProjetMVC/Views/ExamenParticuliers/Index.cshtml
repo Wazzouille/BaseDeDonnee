@@ -1,0 +1,19 @@
+﻿@model WebApplicationProjetMVC.Models.ExamPartiViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Confirmation de l'ajout</h2>
+<div>
+    <h3>
+        Etes vous sur de vouloir assigner l'examen " @Html.DisplayName(Model.ExamenModel.libelle) " au travailleur " @Html.DisplayName(Model.EmploiModel.Travailleur.nom) "
+        de l'entreprise " @Html.DisplayName(Model.EmploiModel.Entreprise.denomination) "
+    </h3>
+</div>
+<div>
+    @Html.ActionLink("Valider", "Create", "ExamenParticuliers", new { idEx = Model.ExamenModel.idExamen, idEm = Model.EmploiModel.idEmploi }, null)
+</div>
+<div>
+    @Html.ActionLink("Retour à la liste des risques", "Index", "TypeExamen", new { id = Model.EmploiModel.idEmploi }, null)
+</div>

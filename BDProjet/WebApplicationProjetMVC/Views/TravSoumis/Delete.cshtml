@@ -1,0 +1,40 @@
+﻿@model WebApplicationProjetMVC.Models.TravSoumi
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>TravSoumi</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Emploi.soumis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Emploi.soumis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Risque.libelle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Risque.libelle)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

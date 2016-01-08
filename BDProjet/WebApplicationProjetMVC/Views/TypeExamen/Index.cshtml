@@ -1,0 +1,33 @@
+﻿@model WebApplicationProjetMVC.Models.EmploiExamenViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Liste des examens</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Libelle de l'examen
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.ExamenModel)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.libelle)
+            </td>
+            <td>
+                @Html.ActionLink("Assigner cet examen", "Index", "ExamenParticuliers", new { idEx = item.idExamen, idEm = Model.EmploiModel.idEmploi }, null)
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div>
+    @Html.ActionLink("Retour à la liste des emplois", "Index", "Emplois", new { id = Model.EmploiModel.idEntreprise }, null)
+</div>

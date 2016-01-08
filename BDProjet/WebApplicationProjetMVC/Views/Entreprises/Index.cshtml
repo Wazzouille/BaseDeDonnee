@@ -1,0 +1,42 @@
+﻿@model IEnumerable<WebApplicationProjetMVC.Models.Entreprise>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Choix de l'entreprise</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Nom
+        </th>
+        <th>
+            Ville
+        </th>
+        <th>
+            Personne de Contact
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.denomination)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ville)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.personneContact)
+            </td>
+            <td>
+                @Html.ActionLink("Lister les emplois", "Index", "Emplois", new { id = item.idEntreprise }, null)
+            </td>
+        </tr>
+    }
+
+</table>
+

@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBIG3B8ModelStoreContainer" CdmEntityContainer="DBIG3B8Entities">
+    <EntitySetMapping Name="Emplois">
+      <EntityTypeMapping TypeName="DBIG3B8Model.Emploi">
+        <MappingFragment StoreEntitySet="Emploi">
+          <ScalarProperty Name="idEmploi" ColumnName="idEmploi" />
+          <ScalarProperty Name="dateEmbauche" ColumnName="dateEmbauche" />
+          <ScalarProperty Name="dateFin" ColumnName="dateFin" />
+          <ScalarProperty Name="soumis" ColumnName="soumis" />
+          <ScalarProperty Name="idEntreprise" ColumnName="idEntreprise" />
+          <ScalarProperty Name="idTrav" ColumnName="idTrav" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Entreprises">
+      <EntityTypeMapping TypeName="DBIG3B8Model.Entreprise">
+        <MappingFragment StoreEntitySet="Entreprise">
+          <ScalarProperty Name="idEntreprise" ColumnName="idEntreprise" />
+          <ScalarProperty Name="denomination" ColumnName="denomination" />
+          <ScalarProperty Name="personneContact" ColumnName="personneContact" />
+          <ScalarProperty Name="ville" ColumnName="ville" />
+          <ScalarProperty Name="codePostal" ColumnName="codePostal" />
+          <ScalarProperty Name="rue" ColumnName="rue" />
+          <ScalarProperty Name="numeroRue" ColumnName="numeroRue" />
+          <ScalarProperty Name="numTel" ColumnName="numTel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExamenParticuliers">
+      <EntityTypeMapping TypeName="DBIG3B8Model.ExamenParticulier">
+        <MappingFragment StoreEntitySet="ExamenParticulier">
+          <ScalarProperty Name="idExamPart" ColumnName="idExamPart" />
+          <ScalarProperty Name="idEmploi" ColumnName="idEmploi" />
+          <ScalarProperty Name="idExamen" ColumnName="idExamen" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Risques">
+      <EntityTypeMapping TypeName="DBIG3B8Model.Risque">
+        <MappingFragment StoreEntitySet="Risque">
+          <ScalarProperty Name="libelle" ColumnName="libelle" />
+          <ScalarProperty Name="idRisque" ColumnName="idRisque" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Travailleurs">
+      <EntityTypeMapping TypeName="DBIG3B8Model.Travailleur">
+        <MappingFragment StoreEntitySet="Travailleur">
+          <ScalarProperty Name="idTrav" ColumnName="idTrav" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="ville" ColumnName="ville" />
+          <ScalarProperty Name="codePostal" ColumnName="codePostal" />
+          <ScalarProperty Name="rue" ColumnName="rue" />
+          <ScalarProperty Name="numRue" ColumnName="numRue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TravSoumis">
+      <EntityTypeMapping TypeName="DBIG3B8Model.TravSoumi">
+        <MappingFragment StoreEntitySet="TravSoumis">
+          <ScalarProperty Name="idTravSoum" ColumnName="idTravSoum" />
+          <ScalarProperty Name="idEmploi" ColumnName="idEmploi" />
+          <ScalarProperty Name="idRisque" ColumnName="idRisque" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeExamen">
+      <EntityTypeMapping TypeName="DBIG3B8Model.TypeExaman">
+        <MappingFragment StoreEntitySet="TypeExamen">
+          <ScalarProperty Name="idExamen" ColumnName="idExamen" />
+          <ScalarProperty Name="libelle" ColumnName="libelle" />
+          <ScalarProperty Name="periodicite" ColumnName="periodicite" />
+          <ScalarProperty Name="prixTS" ColumnName="prixTS" />
+          <ScalarProperty Name="prixNS" ColumnName="prixNS" />
+          <ScalarProperty Name="CompteDeProduit" ColumnName="CompteDeProduit" />
+          <ScalarProperty Name="idRisque" ColumnName="idRisque" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

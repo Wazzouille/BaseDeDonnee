@@ -1,0 +1,13 @@
+﻿@model WebApplicationProjetMVC.Models.Emploi
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div>
+    <h3>Ajout validé</h3>
+</div>
+
+<div>
+    @Html.ActionLink("Retour à la liste des examens", "Index", "TypeExamen", new { id = Model.idEmploi }, null)
+</div>
